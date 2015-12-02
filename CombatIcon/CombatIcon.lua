@@ -24,13 +24,13 @@ frame.focus.icon:SetTexture("Interface\\Icons\\ABILITY_DUALWIELD")
 frame.focus.icon:SetAllPoints(frame.focus)
 frame.focus:Hide()
 
-local function UpdateTargetFrame()
+local function UpdateTargetFrame(frame)
 	targetFrame = XPerl_Target or TargetFrame
 	frame.target:SetPoint("BottomRight", targetFrame, "TopRight", -18, 2)
 	frame.target:SetParent(targetFrame)
 end
 
-local function UpdateFocusFrame()
+local function UpdateFocusFrame(frame)
 	focusFrame = XPerl_Focus or FocusFrame
 	frame.focus:SetPoint("BottomRight", focusFrame, "TopRight", -18, 2)
 	frame.focus:SetParent(focusFrame)
@@ -40,9 +40,8 @@ frame:SetScript("OnEvent", function(self, event, ...)
 	if event == "ADDON_LOADED" then
 		local addon = ...
 		if addon == "ZPerl_Target" then
-			UpdateTargetFrame()
-		elseif "ZPerl_TargetTarget" then
-			UpdateFocusFrame()
+			UpdateTargetFrame(self)
+			UpdateFocusFrame(self)
 		end
 	elseif event == "PLAYER_TARGET_CHANGED" then
 		if UnitAffectingCombat("target") then

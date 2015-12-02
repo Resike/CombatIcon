@@ -1,6 +1,6 @@
 ## Interface: 60100
 ## Title: CombatIcon
-## Version: 1.0
+## Version: 1.1
 ## Author: Resike
 ## DefaultState: Enabled
 
